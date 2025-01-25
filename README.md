@@ -96,7 +96,7 @@ As you see above, the first column is is forced to stop printing notes premature
 
 I was about to give up because the graphs still showed that correct order of albums, the top played album and the least played album clearly being biggest and smalled bars, but I ended up figuring out where I was going wrong and was able to display the correct amount of musical notes.
 
-<img src="Documentation/actually_FINAL_notesize.png" alt="Notes" height="300">
+<img src="Documentation/actually_FINAL_notesize.png" alt="Notes" height="300"><img src="Documentation/note_size_fixed2.png" alt="Notes" height="300">
 
 
 
@@ -104,7 +104,7 @@ I was about to give up because the graphs still showed that correct order of alb
 After I figured out the problem with my bar graph I wrote a text function which would take the first x position of the album covers to print a message at the bottom of the screen.
 This function was is also called within the album cover function.
 
-<img src="Documentation/text.png" alt="Notes" height="200"><img src="Documentation/note_size_fixed.png" alt="Notes" height="300">
+<img src="Documentation/text.png" alt="Notes" height="200">
 
 ## What I learned, what I did wrong, and how I would expand this sketch
 
