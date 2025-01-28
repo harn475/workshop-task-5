@@ -1,115 +1,89 @@
-//declaring album artwork images and array 
-let under_the_bushes, cold_visions, how_sad, jack_and, jesus_is_king, sunset_tree, dear_god, the_agent;
-let album_art_array;
+// Declare variables for movie posters, movie names, and data
+let brave, encanto, frozen_II, luca, moana, princess_and_the_frog, tangled;
+let movie_poster_array = [];
+let movie_names = ["Frozen II", "Encanto", "Moana", "Princess and the Frog", "Brave", "Tangled", "Luca"];
+let movie_data = [];  // Array to store the views data
+let star_size = 30;  // Size of the stars
 
-//declaring table
-let data_table;
+function preload() {
+  // Load the table data from the CSV
+  data_table = loadTable('Resources/movie_data.csv', 'csv', 'header');
 
-//declaring musical note images
-let note1, note2, note3, note4, note5, note6;
-let note_array
+  // Load the movie posters
+  brave = loadImage('Resources/brave.jpg');
+  encanto = loadImage('Resources/encanto.jpg');
+  frozen_II = loadImage('Resources/frozen II.jpeg');
+  luca = loadImage('Resources/luca.jpg');
+  moana = loadImage('Resources/moana.jpg');
+  princess_and_the_frog = loadImage('Resources/princess and the frog.jpg');
+  tangled = loadImage('Resources/tangled.webp');
+  
+  // Store all posters in an array
+  movie_poster_array = [brave, encanto, frozen_II, luca, moana, princess_and_the_frog, tangled];
 
+  // Get the view data from the CSV file
+  for (let i = 0; i < movie_names.length; i++) {
+    let row = data_table.findRow(movie_names[i], 'movie_name');
+    if (row) {
+      let views = row.getNum('views');
+      movie_data.push(views);  // Push the view count into the array
+    } else {
+      movie_data.push(0);  // If no data, assume 0 views
+    }
+  }
 
-function preload(){
-
-  //loading table
-  data_table = loadTable('Resources/album_data.csv', 'csv', 'header');
-
-  //loading images and array
-  under_the_bushes = loadImage('Resources/Under.jpg');
-  cold_visions = loadImage('Resources/Cold_Visions.jpg');
-  how_sad = loadImage('Resources/How_Sad.jpg');
-  jack_and = loadImage('Resources/jack.jpg');
-  jesus_is_king = loadImage('Resources/Jesus.jpg');
-  sunset_tree = loadImage('Resources/Sunset.jpg');
-  dear_god = loadImage('Resources/Deargod.jpg');
-  the_agent = loadImage('Resources/Agent.jpg');
-  album_art_array = [under_the_bushes, cold_visions, how_sad, jack_and, jesus_is_king, sunset_tree, dear_god, the_agent];
-
-
-  //loading music note images
-  note1 = loadImage ('Resources/musicalnotes/note1.png');
-  note2 = loadImage ('Resources/musicalnotes/note2.png');
-  note3 = loadImage ('Resources/musicalnotes/note3.png');
-  note4 = loadImage ('Resources/musicalnotes/note4.png');
-  note5 = loadImage ('Resources/musicalnotes/note5.png');
-  note6 = loadImage ('Resources/musicalnotes/note6.png');
-  note_array = [note1, note2, note3, note4, note5, note6];
-
+  // Debugging: Log the movie data to ensure views are correctly loaded
+  console.log(movie_data);  // Check if the movie data is correctly loaded
 }
-
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
-  frameRate(2)
+  frameRate(2);
 }
 
-//function  for window resizing
-function windowResized(){
+function windowResized() {
   resizeCanvas(windowWidth, windowHeight);
 }
 
-
 function draw() {
   background(220);
-  print_album_images();
-  
+  print_movie_images();  // Print movie posters and stars above them
 }
 
-function print_album_images(){
-  //album sizing
-  let album_size = floor(windowWidth/12);
-  let total_album_size = (album_size * album_art_array.length);
-  let space_leftover = windowWidth - total_album_size;
-
-    // x and y position and spacing between albums
-  let space = space_leftover / (album_art_array.length + 1);
-  let xpos = space;
-  let ypos = windowHeight - (windowHeight/4);
-
-  // musical note size
-  let note_size = album_size/2;
+function print_movie_images() {
+  let movie_width = windowWidth / 7;  // Adjust width for posters
+  let movie_height = windowHeight / 4;  // Adjust height for rectangular posters
   
-  for(let x = 0; x< album_art_array.length; x++){
-    imageMode(CORNER);
-    image(album_art_array[x], xpos, ypos, album_size, album_size);
-    print_music_data(x, xpos, ypos, album_size);
-    xpos += album_size + space;
+  let xpos = 50;  // Starting x position for images
+  let ypos = windowHeight - 250;  // Starting y position for images
+  
+  for (let i = 0; i < movie_poster_array.length; i++) {
+    let num_stars = floor(movie_data[i] / 10); // Calculate number of stars based on views (1 star per 10 views)
     
+    // Debugging: Log the number of stars for each movie
+    console.log("Movie: " + movie_names[i] + " Views: " + movie_data[i] + " Stars: " + num_stars);
+
+    // Draw stars above the movie poster
+    let star_xpos = xpos + movie_width / 2 - star_size / 2;  // Center stars above the poster
+    let star_ypos = ypos - 40;  // Position stars slightly above the poster
+    
+    // Draw stars vertically (only draw stars if num_stars is greater than 0)
+    if (num_stars > 0) {
+      fill('gold');
+      textSize(star_size);
+      textAlign(CENTER);
+      for (let j = 0; j < num_stars; j++) {
+        text("★", star_xpos, star_ypos - j * (star_size + 5));  // Stacking stars vertically
+      }
+    } else {
+      // Debugging: If no stars are being drawn, show a fallback message
+      console.log("No stars for: " + movie_names[i]);
+    }
+
+    // Draw the movie poster below the stars
+    image(movie_poster_array[i], xpos, ypos, movie_width, movie_height);
+
+    // Update xpos for the next movie poster
+    xpos += movie_width + 20;  // 20 pixels of space between posters
   }
-  my_text(space);
 }
-
-//function for printing the music data
-function print_music_data(num, xpos, ypos, album_size){
-  let mydata = data_table.get(0, num);
-  let current_y = ypos-album_size;
-  let note_count = floor(mydata);
-
-  //dynamic note sizing
-  total_height = windowHeight;
-  max_notes = floor(data_table.get(0, 0));
-  avail_area = (total_height - 50) - (total_height - current_y);
-  avail_top = 50;
-  note_size = avail_area/ max_notes;
-
-
-
-  for(x=1; x<note_count; x++){
-    if (current_y> avail_top){
-    imageMode(CORNER);
-    let my_note = note_array[floor(random(0, note_array.length))];
-    image(my_note, xpos, current_y, note_size, note_size);
-    current_y -= note_size;}
-  }
-}
-
-
-
-function my_text(xpos){
-  let ypos = windowHeight - 20;
-  textSize(20);
-  fill('black');
-  text("my most played albums in descending order^", xpos, ypos);
-}
-
