@@ -33,7 +33,7 @@ function preload() {
   }
 
  
-  console.log(movie_data);  // Check if the movie data is correctly loaded
+  console.log(movie_data);  
 }
 
 function setup() {
@@ -47,13 +47,12 @@ function windowResized() {
 
 function draw() {
   background(220);
-  print_movie_images();  // Print movie posters and stars above them
+  print_movie_images();  
 }
 
 function print_movie_images() {
-  let movie_width = windowWidth / 7;  // Adjust width for posters
-  let movie_height = windowHeight / 4;  // Adjust height for rectangular posters
-  
+  let movie_width = windowWidth / 7;  
+  let movie_height = windowHeight / 4;  
   let xpos = 50;  // Starting x position for images
   let ypos = windowHeight - 250;  // Starting y position for images
   
@@ -75,10 +74,7 @@ function print_movie_images() {
       for (let j = 0; j < num_stars; j++) {
         text("★", star_xpos, star_ypos - j * (star_size + 5));  // Stacking stars vertically
       }
-    } else {
-      // Debugging: If no stars are being drawn, show a fallback message
-      console.log("No stars for: " + movie_names[i]);
-    }
+    } 
 
     // Draw the movie poster below the stars
     image(movie_poster_array[i], xpos, ypos, movie_width, movie_height);
