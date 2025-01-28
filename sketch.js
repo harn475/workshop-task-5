@@ -32,7 +32,7 @@ function preload() {
     }
   }
 
-  // Debugging: Log the movie data to ensure views are correctly loaded
+ 
   console.log(movie_data);  // Check if the movie data is correctly loaded
 }
 
@@ -60,7 +60,7 @@ function print_movie_images() {
   for (let i = 0; i < movie_poster_array.length; i++) {
     let num_stars = floor(movie_data[i] / 10); // Calculate number of stars based on views (1 star per 10 views)
     
-    // Debugging: Log the number of stars for each movie
+    
     console.log("Movie: " + movie_names[i] + " Views: " + movie_data[i] + " Stars: " + num_stars);
 
     // Draw stars above the movie poster
