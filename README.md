@@ -43,9 +43,6 @@ During the development of this project, I struggled with an issue where the movi
 
 This project was a great learning experience in working with data visualization and interactive elements in p5.js. The process was challenging, especially due to issues with the CSV file, but after figuring out the problem, I was able to implement a working solution. I also gained more experience in handling images, dynamic layouts, and text drawing in p5.js. If I had more time, I would focus on enhancing the design elements, particularly the movie title presentation.
 
-Certainly! Here's a reference list along with a declaration of your help sources:
-
----
 
 **Reference List:**
 
