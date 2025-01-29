@@ -43,7 +43,22 @@ During the development of this project, I struggled with an issue where the movi
 
 This project was a great learning experience in working with data visualization and interactive elements in p5.js. The process was challenging, especially due to issues with the CSV file, but after figuring out the problem, I was able to implement a working solution. I also gained more experience in handling images, dynamic layouts, and text drawing in p5.js. If I had more time, I would focus on enhancing the design elements, particularly the movie title presentation.
 
+Certainly! Here's a reference list along with a declaration of your help sources:
 
+---
+
+**Reference List:**
+
+1. p5.js Reference - 2D Primitives. (n.d.). Retrieved from [https://p5js.org/reference/#2D%20Primitives](https://p5js.org/reference/#2D%20Primitives)
+   
+2. p5.js Discourse Forum. (n.d.). Retrieved from [https://discourse.processing.org/c/p5js/10](https://discourse.processing.org/c/p5js/10)
+   
+3. Reddit Users.
+---
+
+**Declaration:**
+
+I declare that I received help with my coding from my flatmate, who is experienced with programming. Additionally, I conducted several quick Google searches to resolve issues encountered during the development process. These searches helped in understanding how to implement specific features and troubleshoot problems, especially related to p5.js, as well as getting advice from relevant forums and communities.
 
 
 
